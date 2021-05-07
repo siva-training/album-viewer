@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: album-viewer
+  labels:
+    app: album-viewer
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: album-viewer
+      labels:
+        app: album-viewer
+    spec:
+      containers:
+      - name: album-viewer
+        image: dockersamples/dotnet-album-viewer
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        env:
+          - name: Provider
+            value: "MySQL"
+          - name: ConnectionString
+            value: "Server=album-viewer-db-svc.av.svc.cluster.local;Port=3306;Database=AlbumViewer;User=root;SslMode=None"
+      nodeSelector:
+        kubernetes.io/os: windows
+      schedulerName: default-scheduler
+      serviceAccount: default
+      serviceAccountName: default
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: album-viewer
