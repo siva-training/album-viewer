@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: album-viewer
+  name: nginx-album-viewer
   labels:
-    app: album-viewer
+    app: nginx-album-viewer
 spec:
   replicas: 1
   template:
     metadata:
-      name: album-viewer
+      name: nginx-album-viewer
       labels:
-        app: album-viewer
+        app: nginx-album-viewer
     spec:
       containers:
-      - name: album-viewer
-        image: rickstrahl/albumviewer:albumviewer
+      - name: nginx-album-viewer
+        image: 34.134.86.37:8624/vmie-dev/nginxalbumviewer:nginxalbumviewer
         ports:
-        - containerPort: 5000
+        - containerPort: 80
           protocol: TCP
       nodeSelector:
-        kubernetes.io/os: windows
+        kubernetes.io/os: linux
       schedulerName: default-scheduler
       serviceAccount: default
       serviceAccountName: default
       restartPolicy: Always
   selector:
     matchLabels:
-      app: album-viewer
+      app: nginx-album-viewer

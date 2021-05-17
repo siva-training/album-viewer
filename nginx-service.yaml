@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: album-viewer-svc
+  name: nginx-album-viewer-svc
   labels:
-    app: album-viewer-svc
+    app: nginx-album-viewer-svc
 spec:
   ports:
     # the port that this service should serve on
     - port: 5000
       targetPort: 5000
   selector:
-    app: album-viewer-svc
+    app: nginx-album-viewer-svc
   type: NodePort
