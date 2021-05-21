@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nginx-album-viewer
-        image: 35.224.56.220:8624/vmie-dev/library/nginxalbumviewer:nginxalbumviewer
+        image: 35.222.125.50:8624/vmie-dev/library/nginxalbumviewer:nginxalbumviewer
         ports:
         - containerPort: 80
           protocol: TCP
