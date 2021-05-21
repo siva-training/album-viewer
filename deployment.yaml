@@ -16,7 +16,7 @@ spec:
       - name: album-viewer
         image: 35.222.125.50:8624/vmie-dev/library/albumviewer:albumviewer
         ports:
-        - containerPort: 5000
+        - containerPort: 80
           protocol: TCP
       nodeSelector:
         kubernetes.io/os: windows
