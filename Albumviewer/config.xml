@@ -49,21 +49,19 @@ dotnet restore </command>
       <configuredLocalRules/>
     </hudson.tasks.BatchFile>
     <hudson.tasks.BatchFile>
-      <command>&quot;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe&quot; &quot;c:\repo\AlbumViewerNetCore.sln&quot; /t:Restore /t:publish /p:Configuration=Release /p:Platform=&quot;Any CPU&quot; /v:detailed /p:PublishDir=&quot;C:\Release1\bin\Release\net5.0\publish&quot; </command>
+      <command>&quot;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe&quot; &quot;c:\repo\AlbumViewerNetCore.sln&quot; /t:Restore /t:publish /p:Configuration=Release /p:Platform=&quot;Any CPU&quot; /v:detailed /p:PublishDir=&quot;C:\Release\bin\Release\net5.0\publish&quot; </command>
       <configuredLocalRules/>
     </hudson.tasks.BatchFile>
     <hudson.tasks.BatchFile>
-      <command>docker tag albumviewer:albumviewer 35.224.56.220:8624/vmie-dev/albumviewer:albumviewer&#xd;
+      <command>cd C:\Release&#xd;
 &#xd;
-docker push 35.224.56.220:8624/vmie-dev/albumviewer:albumviewer</command>
+docker build -t 35.222.125.50:8624/vmie-dev/albumviewer:albumviewer .&#xd;
+</command>
       <configuredLocalRules/>
     </hudson.tasks.BatchFile>
     <hudson.tasks.BatchFile>
       <command>&#xd;
-copy &quot;C:\albumviewer-master\albumviewer-master\src\AlbumViewerNetCore\Dockerfile&quot; &quot;C:\Release\&quot; &#xd;
-&#xd;
-docker build -f C:\Release\Dockerfile  -t albumviewer:albumviewer ./src/AlbumViewerNetCore&#xd;
-</command>
+docker push 35.222.125.50:8624/vmie-dev/albumviewer:albumviewer</command>
       <configuredLocalRules/>
     </hudson.tasks.BatchFile>
   </builders>
